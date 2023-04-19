@@ -1,9 +1,13 @@
 import { Schema, model } from "mongoose";
 
 //criando o Schema:
-const taskSchema = new Schema(
+const bountieSchema = new Schema(
   {
-    details: { type: String, required: true },
+    title: { type: String, require: true },
+    description: { type: String, require: true },
+    price: { type: Number, require: true },
+    category: String,
+    skill: String,
     complete: { type: Boolean, default: false },
     dateFin: { type: Date },
     user: { type: Schema.Types.ObjectId, ref: "User" },
@@ -17,6 +21,6 @@ const taskSchema = new Schema(
   { timestamps: true }
 );
 
-const TaskModel = model("Task", taskSchema);
+const BountieModel = model("Bountie", bountieSchema);
 
-export default TaskModel;
+export default BountieModel;

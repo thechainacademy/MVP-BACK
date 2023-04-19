@@ -1,63 +1,59 @@
 import { Schema, model } from "mongoose";
 
-//criando o Schema:
-//userSchema é um objeto que estará instanciando a classe Schema,
-//o Schema receberá um objeto de parâmetro, como se fosse o 'constructor' de uma classe, e esse objeto conterá os campos que queremos guardar
 const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      require: true,
       trim: true,
-      minLength: 2,
-      maxLength: 50,
       lowercase: true,
-    },
-
-    age: {
-      type: Number,
-      min: 18,
-      max: 100,
     },
 
     email: {
       type: String,
-      required: true,
+      require: true,
       unique: true,
       lowercase: true,
-      match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
+      trim: true,
     },
 
-    role: {
+    calendly: {
       type: String,
-      enum: ["ADMIN", "USER"],
-      default: "USER",
+      trim: true,
     },
 
-    active: {
-      type: Boolean,
-      default: true,
+    language: {
+      type: String,
+      trim: true,
     },
 
-    tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
+    skills: {
+      type: String,
+      trim: true,
+    },
 
-    birth: { type: Date },
+    description: {
+      type: String,
+      trim: true,
+    },
+
+    birth: String,
+
+    priceToken: Number,
+
+    balanceToken: { type: Number, default: 0 },
 
     passwordHash: { type: String, require: true },
 
     profilePic: { type: String },
 
-    adress: {
-      city: { type: String },
-      state: { type: String },
-    },
+    bounties: [{ type: Schema.Types.ObjectId, ref: "Bountie" }],
+
+    calls: [{ type: Schema.Types.ObjectId, ref: "Call" }],
   },
   { timestamps: true }
 );
 
-//modelo da collection:
-//model(1º parâmetro: "nome do modelo"(nome do arquivo - primeira letra em maiúsculo e no singulat), 2º Parâmetro: o schema)
-// = exportando um modelo (.model), que tem o nome "Content" (1º parâmetro), e segue a receita do contentScheema (2º parâmetro)
 const UserModel = model("User", userSchema);
 
 export default UserModel;
