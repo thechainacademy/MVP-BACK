@@ -4,7 +4,7 @@
 //3. cria a chave req.currentUser, de onde vai pegar todas as informações do usuário
 // 3. next()
 
-import UserModel from "../model/user.model.js";
+import UserModel from "../models/user.model.js";
 async function attachCurrentUser(req, res, next) {
   try {
     //consumindo as informaçõesde req.auth

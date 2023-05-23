@@ -55,6 +55,10 @@ const userSchema = new Schema(
     bounties: [{ type: Schema.Types.ObjectId, ref: "Bountie" }],
 
     calls: [{ type: Schema.Types.ObjectId, ref: "Call" }],
+
+    resetToken: String,
+
+    resetTokenExpiration: Date,
   },
   { timestamps: true }
 );
