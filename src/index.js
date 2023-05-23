@@ -9,8 +9,4 @@ connect();
 
 app.use(cors()).use(express.json()).use(authRouter);
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`App up and running at http://localhost:${PORT}`);
-});
+export { app };
