@@ -5,14 +5,12 @@ import cors from "cors";
 import authRouter from "./routes/user.routes.js";
 
 const app = express();
-
-app.use(express.json());
-
 connect();
-app.use("/user", authRouter);
 
-app.listen(process.env.PORT, () => {
-  console.log(
-    `App up and running on port http://localhost:${process.env.PORT}`
-  );
+app.use(cors()).use(express.json()).use(authRouter);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`App up and running at http://localhost:${PORT}`);
 });

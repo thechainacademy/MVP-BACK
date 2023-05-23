@@ -2,10 +2,12 @@ import "dotenv/config";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+import * as userRepository from "../repositories/auth.repository.js";
+
 export async function createUser(user) {
   const numberOfSalts = process.env.SALTS;
 
-  const userExist = await userRepository.findUserbyEmail(user.email);
+  const userExist = await userRepository.findUserByEmail(user.email);
 
   if (userExist) return null;
 

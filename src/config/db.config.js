@@ -1,6 +1,3 @@
-//AQUI VÃO AS CONFUGURAÇÕES DO DB
-
-//mongoose vai nos conectar com o mangodb, com os schemas
 import mongoose from "mongoose";
 
 async function connect() {

@@ -1,6 +1,5 @@
 import { Schema, model } from "mongoose";
 
-//criando o Schema:
 const bountieSchema = new Schema(
   {
     title: { type: String, require: true },
