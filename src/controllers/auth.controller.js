@@ -1,4 +1,5 @@
 import * as userService from "../services/auth.services.js";
+import { sendNewUserMail } from "../utils/mail.js";
 
 export async function createUser(req, res) {
   try {
@@ -6,7 +7,7 @@ export async function createUser(req, res) {
     const userExist = await userService.createUser(user);
     if (!userExist)
       return res.status(409).json({ message: "User already registered" });
-    const mail = sendNewUserMail(user);
+    const mail = await sendNewUserMail(user);
     if (mail) {
       return res.status(201).json({
         message: "User registred",
@@ -14,7 +15,7 @@ export async function createUser(req, res) {
         email: user.email,
       });
     }
-    if (!email) {
+    if (!mail) {
       return res.status(201).json({
         message:
           "User successfully registered, but email not sent due to server failure",

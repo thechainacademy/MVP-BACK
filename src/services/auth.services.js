@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import * as userRepository from "../repositories/auth.repository.js";
 
 export async function createUser(user) {
-  const numberOfSalts = process.env.SALTS;
+  const numberOfSalts = Number(process.env.SALTS);
 
   const userExist = await userRepository.findUserByEmail(user.email);
 
