@@ -13,8 +13,8 @@ const bountieSchema = new Schema(
     collab: [{ type: Schema.Types.ObjectId, ref: "User" }],
     status: {
       type: String,
-      enum: ["criada", "iniciada", "finalizando"],
-      default: "criada",
+      enum: ["creating", "initializing", "finalizing"],
+      default: "created",
     },
   },
   { timestamps: true }
