@@ -15,7 +15,7 @@ async function attachCurrentUser(req, res, next) {
 
     //confirmar se o user existe
     if (!user) {
-      return res.status(400).json({ msg: "Usuário não encontrado" });
+      return res.status(400).json({ msg: "User not found" });
     }
 
     //criando a chave req.currentUser, de onde vai pegar todas as informações do usuário
