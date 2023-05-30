@@ -7,4 +7,8 @@ authRouter.post("/sign-up", userController.createUser);
 
 authRouter.post("/sign-in", userController.loginUser);
 
+authRouter.put("/ask-for-reset", userController.askForReset);
+
+authRouter.put("/reset-pass", userController.resetPass);
+
 export default authRouter;

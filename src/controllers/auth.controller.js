@@ -42,3 +42,33 @@ export async function loginUser(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+
+export async function askForReset(req, res) {
+  try {
+    const user = req.body;
+    const foundUser = await userService.askForReset(user);
+    if (!foundUser)
+      return res.status(404).json({ message: "User not registred" });
+    return res.status(200).json({
+      message: `Sending email with reset Token for user ${foundUser.name}`,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export async function resetPass(req, res) {
+  try {
+    const user = req.body;
+    const foundUser = await userService.resetPass(user);
+    if (!foundUser)
+      return res.status(404).json({ message: "User not registred" });
+    return res.status(200).json({
+      message: "Password changed",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
