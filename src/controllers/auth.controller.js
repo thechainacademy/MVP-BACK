@@ -48,7 +48,7 @@ export async function askForReset(req, res) {
     const user = req.body;
     const foundUser = await userService.askForReset(user);
     if (!foundUser)
-      return res.status(404).json({ message: "User not registred" });
+      return res.status(404).json({ message: "User not registered" });
     return res.status(200).json({
       message: `Sending email with reset Token for user ${foundUser.name}`,
     });
@@ -63,7 +63,7 @@ export async function resetPass(req, res) {
     const user = req.body;
     const foundUser = await userService.resetPass(user);
     if (!foundUser)
-      return res.status(404).json({ message: "User not registred" });
+      return res.status(404).json({ message: "User not registered" });
     return res.status(200).json({
       message: "Password changed",
     });

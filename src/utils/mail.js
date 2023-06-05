@@ -35,7 +35,7 @@ export async function sendResetToken(email, name, token) {
       from: transporter.options.auth.user,
       to: email,
       subject: "Reset Password Token",
-      text: `Hello ${name} your token to reset your password is: ${token}.`,
+      text: `Hello ${name} your token to reset your password is: ${token}. The token is valid for 1 hour`,
     });
   } catch (err) {
     console.log(err);
