@@ -54,4 +54,9 @@ describe("*** POST /sign-in ***", () => {
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body.message).toEqual("Invalid email and/or password");
   });
+  it("should return 400 when the test pass a invalid body", async () => {
+    const user = {};
+    const response = await supertest(app).post("/sign-in").send(user);
+    expect(response.status).toBe(400);
+  });
 });

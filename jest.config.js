@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
-dotenv.config({ path: '.env.development' });
+dotenv.config({ path: ".env.test" });
 
 export default {
-    // Other Jest configuration options...
-    setupFilesAfterEnv: ['dotenv/config'],
-  };
+  // Other Jest configuration options...
+  setupFilesAfterEnv: ["dotenv/config"],
+};
