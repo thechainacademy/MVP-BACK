@@ -13,13 +13,13 @@ const bountieSchema = new Schema(
     collab: [{ type: Schema.Types.ObjectId, ref: "User" }],
     status: {
       type: String,
-      enum: ["creating", "initializing", "finalizing"],
+      enum: ["created", "initialized", "finalized"],
       default: "created",
     },
   },
   { timestamps: true }
 );
 
-const BountieModel = model("Bountie", bountieSchema);
+const Bountie = model("Bountie", bountieSchema);
 
-export default BountieModel;
+export default Bountie;

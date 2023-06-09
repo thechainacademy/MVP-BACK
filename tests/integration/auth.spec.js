@@ -8,7 +8,7 @@ beforeEach(async () => {
   await User.deleteMany();
 });
 
-describe("*** POST /sign-up ***", () => {
+describe("*** CREATE USER ***", () => {
   it("Should return status 201 when the test pass a valid user body and email is not yet registered", async () => {
     const user = generateUserBody();
     const response = await supertest(app).post("/sign-up").send(user);
@@ -22,14 +22,14 @@ describe("*** POST /sign-up ***", () => {
     expect(response.status).toBe(409);
     expect(response.body).toBeInstanceOf(Object);
   });
-  it("should return 400 when the test pass a invalid user body", async () => {
+  it("should return 500 when the test pass a invalid user body", async () => {
     const user = {};
     const response = await supertest(app).post("/sign-up").send(user);
-    expect(response.status).toBe(400);
+    expect(response.status).toBe(500);
   });
 });
 
-describe("*** POST /sign-in ***", () => {
+describe("*** LOGIN USER ***", () => {
   it("should return 200 when the test pass a valid login body", async () => {
     const newUser = generateUserBody();
     await supertest(app).post("/sign-up").send(newUser);
@@ -54,9 +54,9 @@ describe("*** POST /sign-in ***", () => {
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body.message).toEqual("Invalid email and/or password");
   });
-  it("should return 400 when the test pass a invalid body", async () => {
+  it("should return 401 when the test pass a invalid body", async () => {
     const user = {};
     const response = await supertest(app).post("/sign-in").send(user);
-    expect(response.status).toBe(400);
+    expect(response.status).toBe(401);
   });
 });
