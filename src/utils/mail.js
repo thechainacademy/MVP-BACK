@@ -27,3 +27,17 @@ export async function sendNewUserMail(newUser) {
     console.log(err);
   }
 }
+
+export async function sendResetToken(email, name, token) {
+  try {
+    const transporter = await createTransporter();
+    return await transporter.sendMail({
+      from: transporter.options.auth.user,
+      to: email,
+      subject: "Reset Password Token",
+      text: `Hello ${name} your token to reset your password is: ${token}. The token is valid for 1 hour`,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}

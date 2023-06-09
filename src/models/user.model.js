@@ -4,19 +4,19 @@ const userSchema = new Schema(
   {
     firstName: {
       type: String,
-      require: true,
+      required: true,
       trim: true,
       lowercase: true,
     },
     lastName: {
       type: String,
-      require: true,
+      required: true,
       trim: true,
       lowercase: true,
     },
     email: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
       lowercase: true,
       trim: true,
@@ -63,6 +63,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const UserModel = model("User", userSchema);
+const User = model("User", userSchema);
 
-export default UserModel;
+export default User;
