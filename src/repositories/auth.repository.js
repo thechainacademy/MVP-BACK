@@ -14,7 +14,7 @@ export async function getUsers() {
 
 export async function newToken(email, resetToken, resetTokenExpiration) {
   return await User.findOneAndUpdate(
-    email,
+    { email: email },
     { resetToken, resetTokenExpiration },
     { new: true }
   );
@@ -30,7 +30,7 @@ export async function userToReset(email, token) {
 
 export async function resetPass(email, password) {
   return await User.findOneAndUpdate(
-    email,
+    { email: email },
     { passwordHash: password },
     { new: true }
   );
@@ -38,7 +38,7 @@ export async function resetPass(email, password) {
 
 export async function clearToken(email) {
   return await User.findOneAndUpdate(
-    email,
+    { email: email },
     { resetToken: null, resetTokenExpiration: null },
     { new: true }
   );
