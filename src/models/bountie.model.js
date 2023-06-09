@@ -2,9 +2,9 @@ import { Schema, model } from "mongoose";
 
 const bountieSchema = new Schema(
   {
-    title: { type: String, require: true },
-    description: { type: String, require: true },
-    price: { type: Number, require: true },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true },
     category: String,
     skill: String,
     complete: { type: Boolean, default: false },
