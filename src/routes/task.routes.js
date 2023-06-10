@@ -28,7 +28,7 @@ taskRoute.post("/create-task", isAuth, attachCurrentUser, async (req, res) => {
     await LogModel.create({
       user: req.currentUser._id,
       task: newTask._id,
-      status: "Uma nova tarefa foi criada",
+      status: "new task was created",
     });
 
     return res.status(201).json(newTask);
@@ -62,7 +62,7 @@ taskRoute.put("/edit/:idTask", isAuth, attachCurrentUser, async (req, res) => {
     await LogModel.create({
       user: req.currentUser._id,
       task: idTask,
-      status: `A tarefa "${updatedTask.details}" foi atualizada`,
+      status: `the task "${updatedTask.details}" was updated`,
     });
 
     return res.status(200).json(updatedTask);
@@ -93,7 +93,7 @@ taskRoute.put(
       await LogModel.create({
         user: req.currentUser._id,
         task: idTask,
-        status: `A tarefa "${task.details}" foi concluída`,
+        status: `the task "${task.details}" was finished`,
       });
 
       return res.status(200).json(task);
@@ -130,7 +130,7 @@ taskRoute.delete(
       await LogModel.create({
         task: idTask,
         user: req.currentUser._id,
-        status: `A tarefa "${deletedTask.details}" foi excluída com o status ${deletedTask.status}`,
+        status: `The task "${deletedTask.details}" was excluded with status ${deletedTask.status}`,
       });
 
       return res.status(200).json(deletedTask);
