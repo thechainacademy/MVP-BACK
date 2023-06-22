@@ -15,6 +15,12 @@ export async function getMyBounties(user) {
 
 export async function getBountie(id) {
   const bountie = await bountieRepository.getBountie(id);
+  if (!bountie.length) throw NotFoundBountie();
+  return bountie;
+}
+
+export async function editBountie(id, editedBountie, user) {
+  const bountie = await bountieRepository.editBountie(id, editedBountie, user);
   if (!bountie) throw NotFoundBountie();
   return bountie;
 }

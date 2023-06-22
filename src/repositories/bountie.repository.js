@@ -18,3 +18,9 @@ export async function getMyBounties(user) {
 export async function getBountie(id) {
   return await Bountie.find({ _id: id }).populate("answers user collab");
 }
+
+export async function editBountie(id, editedBountie, user) {
+  return await Bountie.findOneAndUpdate({ _id: id }, editedBountie, {
+    new: true,
+  });
+}

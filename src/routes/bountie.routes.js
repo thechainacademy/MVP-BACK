@@ -28,4 +28,10 @@ bountieRouter.get(
   bountieController.getBountie
 );
 
+bountieRouter.put(
+  "/bountie/:id",
+  isAuhtenticatedMiddleware,
+  bountieController.editBountie
+);
+
 export default bountieRouter;

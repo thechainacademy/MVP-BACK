@@ -23,3 +23,11 @@ export async function getBountie(req, res) {
   const bountie = await bountieService.getBountie(id);
   return res.status(200).json(bountie);
 }
+
+export async function editBountie(req, res) {
+  const user = res.locals;
+  const id = req.params.id;
+  const editedBountie = req.body;
+  const bountie = await bountieService.editBountie(id, editedBountie, user);
+  return res.status(200).json(bountie);
+}
