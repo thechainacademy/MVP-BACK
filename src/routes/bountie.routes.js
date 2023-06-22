@@ -22,4 +22,10 @@ bountieRouter.get(
   bountieController.getMyBounties
 );
 
+bountieRouter.get(
+  "/bountie/:id",
+  isAuhtenticatedMiddleware,
+  bountieController.getBountie
+);
+
 export default bountieRouter;

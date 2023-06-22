@@ -1,9 +1,13 @@
 import { Schema, model } from "mongoose";
+import Answer from "./answers.model.js";
+
+const AnswerModel = model("Answer", Answer.schema);
 
 const bountieSchema = new Schema(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
+    answers: [{ type: Schema.Types.ObjectId, ref: "Answer" }],
     price: { type: Number, required: true },
     category: String,
     skill: String,

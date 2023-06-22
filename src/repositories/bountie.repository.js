@@ -14,3 +14,7 @@ export async function getBounties() {
 export async function getMyBounties(user) {
   return await Bountie.find({ user: user }).populate("collab");
 }
+
+export async function getBountie(id) {
+  return await Bountie.find({ _id: id }).populate("answers user collab");
+}

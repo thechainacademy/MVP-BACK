@@ -26,4 +26,11 @@ function TokenExpired() {
   };
 }
 
-export { NotFoundUser, LoginError, Conflict, TokenExpired };
+function NotFoundBountie() {
+  return {
+    message: "Bountie not found",
+    status: 404,
+  };
+}
+
+export { NotFoundUser, LoginError, Conflict, TokenExpired, NotFoundBountie };

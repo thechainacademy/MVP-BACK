@@ -17,3 +17,9 @@ export async function getMyBounties(_req, res) {
   const bounties = await bountieService.getMyBounties(user);
   return res.status(200).json(bounties);
 }
+
+export async function getBountie(req, res) {
+  const id = req.params.id;
+  const bountie = await bountieService.getBountie(id);
+  return res.status(200).json(bountie);
+}
