@@ -20,7 +20,11 @@ export async function getBountie(id) {
 }
 
 export async function editBountie(id, editedBountie, user) {
-  return await Bountie.findOneAndUpdate({ _id: id }, editedBountie, {
-    new: true,
-  });
+  return await Bountie.findOneAndUpdate(
+    { _id: id, user: user },
+    editedBountie,
+    {
+      new: true,
+    }
+  );
 }
