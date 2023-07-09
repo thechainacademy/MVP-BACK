@@ -11,7 +11,6 @@ export default async function isAuhtenticatedMiddleware(req, res, next) {
         .json({ message: "You must be logged to continue" });
 
     const validToken = token.split(" ")[1];
-
     const data = jwt.verify(validToken, secret);
     res.locals = data.user;
 

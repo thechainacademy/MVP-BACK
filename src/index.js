@@ -6,6 +6,7 @@ import cors from "cors";
 import authRouter from "./routes/user.routes.js";
 import handleError from "./middlewares/errorHandlerMiddleware.js";
 import bountieRouter from "./routes/bountie.routes.js";
+import answerRouter from "./routes/answer.routes.js";
 
 const app = express();
 connect();
@@ -15,6 +16,7 @@ app
   .use(express.json())
   .use(authRouter)
   .use(bountieRouter)
+  .use(answerRouter)
   .use(handleError);
 
 export { app };

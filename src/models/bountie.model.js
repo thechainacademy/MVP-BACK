@@ -1,7 +1,4 @@
 import { Schema, model } from "mongoose";
-import Answer from "./answers.model.js";
-
-const AnswerModel = model("Answer", Answer.schema);
 
 const bountieSchema = new Schema(
   {
